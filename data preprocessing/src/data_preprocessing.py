@@ -31,7 +31,7 @@ oneHotEncoder = OneHotEncoder(categorical_features = [0])
 X = oneHotEncoder.fit_transform(X).toarray()
 
 labelencoder_y = LabelEncoder()
-X[:, 0] = labelencoder_y.fit_transform(y)
+y = labelencoder_y.fit_transform(y)
 # Dessa forma o modelo irá entender que existe uma comparação entra as categorias
 # sendo que não é isso que queremos
 # Variáveis Dummys: Cria uma coluna para cada tipo diferente de categoria
