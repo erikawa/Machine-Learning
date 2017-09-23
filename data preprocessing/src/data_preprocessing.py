@@ -23,4 +23,16 @@ imputer = Imputer(missing_values = 'NaN', strategy = 'mean', axis = 0)
 imputer = imputer.fit(X[:, 1:3])
 X[:, 1:3] = imputer.transform(X[:, 1:3])
 
-# Variáveis categóricas
+# Variáveis categóricas - Trocar texto por números
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
+oneHotEncoder = OneHotEncoder(categorical_features = [0])
+X = oneHotEncoder.fit_transform(X).toarray()
+
+labelencoder_y = LabelEncoder()
+X[:, 0] = labelencoder_y.fit_transform(y)
+# Dessa forma o modelo irá entender que existe uma comparação entra as categorias
+# sendo que não é isso que queremos
+# Variáveis Dummys: Cria uma coluna para cada tipo diferente de categoria
+
