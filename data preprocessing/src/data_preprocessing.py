@@ -32,3 +32,14 @@ X = oneHotEncoder.fit_transform(X).toarray()
 labelencoder_y = LabelEncoder()
 y = labelencoder_y.fit_transform(y)
 
+#Dividindo o dataset em amostras para treino e para testes
+from sklearn.cross_validation import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+
+# Normalizando as amostras (Feature Scaling)
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+X_train = sc_X.fit_transform(X_train);
+X_test = sc_X.transform(X_test);
+                            
+
